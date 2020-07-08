@@ -22,7 +22,7 @@
     <div style="text-align: center;" *ngIf="dataList.length==0">No details available.</div>
 </div>
 
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-primary" data-toggle="modal" data-backdrop='static' data-target="#employeeModal">
     Add new Record
 </button>
 <app-create-employee (saved)="addNewEmployee($event)"></app-create-employee>
