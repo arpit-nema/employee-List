@@ -1,4 +1,4 @@
-import { Component, OnInit, Output , EventEmitter, Inject} from '@angular/core';
+import { Component, OnInit, Output , EventEmitter, Inject, HostListener} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DOCUMENT } from '@angular/common';
 
@@ -16,6 +16,10 @@ createEmployee: FormGroup;
 
   ngOnInit(): void {
   }
+  @HostListener('click',['event'])
+    public onClick(event :any ){
+      this.clearData();
+    }
 
   /**
    * @method - form
