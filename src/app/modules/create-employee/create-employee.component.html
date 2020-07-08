@@ -1,0 +1,41 @@
+  
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Employee Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearData()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="createEmployee" name="createEmployee" (ngSubmit)="save()">
+
+            <div>
+              <label>Name</label>
+              <input type="text" class="form-control" formControlName="name" maxlength="30">
+              <small class="log-error-msg" *ngIf=" form.name.errors && form.name.errors.required && (form.name.dirty || form.name.touched)">Please enter name</small>
+            </div>
+            <div >
+              <label>Email</label>
+              <input type="text" class="form-control" formControlName="email"  maxlength="30" pattern="[a-zA-Z0-9.+]+@[a-zA-Z]+\.[a-zA-Z]{2,3}$">
+              <small class="log-error-msg" *ngIf=" form.email.errors && form.email.errors.required && (form.email.dirty || form.email.touched)">Please enter email</small>
+              <small class="log-error-msg" *ngIf="form.email.errors && form.email.errors.pattern" class="form-text log-error-msg">Please enter valid email.</small>
+
+            </div>            <div >
+              <label>Phone Number</label>
+              <input type="text" class="form-control" formControlName="phone"  maxlength="10" oncopy="return false" onpaste="return false"  pattern="[6-9]\d{9}$">
+              <small class="log-error-msg" *ngIf=" form.phone.errors && form.phone.errors.required && (form.phone.dirty || form.phone.touched)">Please enter phone number.</small>
+              <small class="log-error-msg" *ngIf="form.phone.errors && form.phone.errors.pattern" class="form-text log-error-msg">Please enter valid phone number.</small>
+
+            </div>
+
+          
+          </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"  [disabled]="!(createEmployee.valid)" type="submit" (click)="save()">Save</button>               
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clearData()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,28 @@
+<div>
+    <table class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+                
+            <tr *ngFor="let list of dataList">
+                <td>{{list?.name}}</td>
+                <td>{{list?.email}}</td>
+                <td>{{list?.phone}}</td>
+                <td><button (click)="deleteRecord(list)">Delete</button></td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div style="text-align: center;" *ngIf="dataList.length==0">No details available.</div>
+</div>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    Add new Record
+</button>
+<app-create-employee (saved)="addNewEmployee($event)"></app-create-employee>
