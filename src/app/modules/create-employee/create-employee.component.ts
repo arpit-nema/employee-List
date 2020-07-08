@@ -16,8 +16,8 @@ createEmployee: FormGroup;
 
   ngOnInit(): void {
   }
-  @HostListener('click',['event'])
-    public onClick(event :any ){
+  @HostListener('document:keydown.escape', ['$event'])
+    public onKeydownHandler(event: KeyboardEvent) {
       this.clearData();
     }
 
